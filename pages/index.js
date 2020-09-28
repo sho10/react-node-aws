@@ -1,6 +1,4 @@
+import Layout from "../components/Layout";
+const Home = () => <Layout>hello next</Layout>;
 
-function Home () {
-  return <div>Hello next</div>;
-}
-
-export function Home
+export default Home;

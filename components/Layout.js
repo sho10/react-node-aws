@@ -1,25 +1,43 @@
 import Head from 'next/head';
+import Link from 'next/link';
+import NProgress from 'nprogress';
+import Router from 'next/router';
+
+Router.onRouteChangeStart = url => NProgress.start();
+Router.onRouteChangeComplete = url => NProgress.done();
+Router.onRouteChangeError = url => NProgress.done();
 
 const Layout = ({children}) => {
   const head = () => (
-    <link
-       rel="stylesheet"
-       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-       crossorigin="anonymous"
-    />
+    <React.Fragment>
+      <link
+         rel="stylesheet"
+         href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+         crossorigin="anonymous"
+      />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js" />
+    </React.Fragment>
   )
 
   const nav = () => (
     <ul className = "nav nav-tabs bg-warning">
       <li className = "nav-item">
-        <a className="nav-link text-dark" href="">Home</a>
+        <Link href="/">
+          <a className="nav-link text-dark" >Home</a>
+        </Link>
       </li>
       <li className = "nav-item">
-        <a className="nav-link text-dark" href="">Login</a>
+        <Link href="/login">
+          <a className="nav-link text-dark" >Login</a>
+        </Link>
       </li>
+
       <li className = "nav-item">
-        <a className="nav-link text-dark" href="">Register</a>
+        <Link href="/register">
+          <a className="nav-link text-dark" >Register</a>
+        </Link>
+
       </li>
     </ul>
   )

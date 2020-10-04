@@ -1,11 +1,15 @@
-const express = reqiure('express');
+const express = require('express');
 
 const router = express.Router();
 
-router.get('/api/register', (req, res) => {
-  res.json({
-    data: 'you hit register endpoint'
-  })
-})
+//import validators
+const {userRegisterValidator} = require('../validator/auth');
+const {runValidation} = require('../validator')
+
+const { register } = require('../controller/auth');
+
+router.post('/register', userRegisterValidator, runValidation, register );
+
+
 
 module.exports = router;
